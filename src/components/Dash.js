@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { outerDiv, tableWrapper } from '../styles/styles.js'
+import { outerDiv, tableWrapper, titleSize, height } from '../styles/styles.js'
 import '../styles/bootstrap.min.css'
+import combineCSS from '../Misc/combineCSS.js';
 import accounts from '../data/accounts.js'
 import holdings from '../data/holdings.js'
 import AccountsTable from './AccountsTable'
@@ -35,6 +36,7 @@ class Dash extends Component {
   mapPropsToTypes(accounts, holdings) {
     let acctTypes = this.filterTypes(accounts),
         props_of_types = [],
+
         sums_by_type = acctTypes.map(acctType => {
           let sum = 0
           for (let i=0; i<accounts.length; i++) {
@@ -65,9 +67,9 @@ class Dash extends Component {
 
   }
 
-  // instead of making html display contingent upon returning props_of_types from the above function, the above function sets props_of_types as state since state changes (i.e. resulting from user and/or api data creation, updates, and deletions) kick off component re-renders automatically.  
+  // The function mapPropsToTypes(accounts, holdings), above, sets props_of_types as state since state changes.  Setting user and/or api data creation, updates, and deletions to state will then kick off component re-renders automatically.  
   componentDidMount() {
-    this.mapPropsToTypes(accounts,holdings)
+    this.mapPropsToTypes(accounts.Accounts,holdings.Positions)
   }
 
   render() {
@@ -75,12 +77,12 @@ class Dash extends Component {
     console.log("JSON.stringify(propsOfTypes) = " + JSON.stringify(propsOfTypes))
     return (
       <div style={ outerDiv }>
-        <div style={ tableWrapper }>
-          <div>Holdings:</div>
-          <HoldingsTable holdings={holdings}></HoldingsTable>
+        <div style={ combineCSS(tableWrapper, height) }>
+          <div style={ titleSize }>Holdings:</div>
+          <HoldingsTable holdings={holdings.Positions}></HoldingsTable>
         </div>
         <div style={ tableWrapper }>
-          <div>Accounts:</div>
+          <div style={ titleSize }>Accounts:</div>
           <AccountsTable propsOfTypes={propsOfTypes}></AccountsTable>
         </div>
       </div>

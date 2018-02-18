@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap';
-import { height } from '../styles/styles.js'
+import { height, paddingLeft } from '../styles/styles.js'
 import '../styles/bootstrap.min.css' 
 
 export default ({holdings}) => (
@@ -15,18 +15,17 @@ export default ({holdings}) => (
       </tr>
     </thead>
     <tbody style={ height }>
+  {/* If holdings were asynchronous, the code in brackets below would have to be rendered conditionally */}
       {
-      	holdings
-      	? holdings.map((holding, i) => {
-	      		return <tr key={i}>
+	    	holdings.map((holding, i) => {
+      		return	<tr key={i}>
 						        <th scope="row">{holding.account_id}</th>
 						        <td>{holding.ticker_name}</td>
 						        <td>{holding.ticker}</td>
 						        <td>${Math.round(holding.price * 100)/100}</td>
-						        <td>{holding.quantity}</td>
+						        <td style={ paddingLeft }>{holding.quantity}</td>
 						      </tr>
       	})
-      	: <p>holdings are {typeof holdings}</p>
       }
     </tbody>
   </Table>

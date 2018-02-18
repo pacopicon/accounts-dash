@@ -1,4 +1,5 @@
-const accounts = [
+const accounts = {
+  "Accounts": [
     {
       "id": 52697,
       "name": "Test Account 52697",
@@ -50,5 +51,6 @@ const accounts = [
       "type": "Brokerage Account"
     }
   ]
+}
 
 export default accounts

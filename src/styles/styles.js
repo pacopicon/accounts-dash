@@ -13,3 +13,11 @@ export const tableWrapper = {
 export const height = {
 	height: '50%'
 }
+
+export const paddingLeft = {
+	paddingLeft: '40px'
+}
+
+export const titleSize = {
+	fontSize: '40px'
+}

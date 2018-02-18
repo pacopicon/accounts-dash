@@ -13,16 +13,15 @@ export default ({propsOfTypes}) => (
       </tr>
     </thead>
     <tbody>
+    {/* If propsOfTypes were asynchronous, the code in brackets below would have to be rendered conditionally */}
       {
-       propsOfTypes
-        ? propsOfTypes.map((propsOfType, i) => {
-            return <tr key={i}>
+        propsOfTypes.map((propsOfType, i) => {
+          return  <tr key={i}>
                     <th scope="row">{propsOfType.type}</th>
                     <td>${Math.round(propsOfType.sum * 100)/100}</td>
                     <td>{Math.round(propsOfType.percentage * 100)/100}%</td>
                   </tr>
-        })
-        : <p>holdings are {typeof types}</p>
+        })    
       }
     </tbody>
   </Table>

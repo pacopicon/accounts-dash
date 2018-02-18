@@ -1,1 +1,1 @@
-Code Challenge for Quovo
+Observation: How to create a new array of objects by cross-indexing two other arrays of objects via ID match in the most efficient manner

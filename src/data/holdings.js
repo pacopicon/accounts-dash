@@ -1,4 +1,5 @@
-const holdings = [
+const holdings = {
+  "Positions": [
     {
       "id": 93622,
       "account_id": 52697,
@@ -288,5 +289,6 @@ const holdings = [
       "ticker_name": "Test Security 10"
     }
   ]
+}
 
 export default holdings
