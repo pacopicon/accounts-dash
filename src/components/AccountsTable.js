@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap';
-import { outerDiv } from '../styles/styles.js'
 import '../styles/bootstrap.min.css' 
 
 export default ({propsOfTypes}) => (

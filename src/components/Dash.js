@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { outerDiv, tableWrapper, titleSize, height } from '../styles/styles.js'
+import { Table } from 'reactstrap';
+import { outerDiv, titleSize, height, padding, noPaddingRight, smallFont, floatRight } from '../styles/styles.js'
 import '../styles/bootstrap.min.css'
-import combineCSS from '../Misc/combineCSS.js';
 import accounts from '../data/accounts.js'
 import holdings from '../data/holdings.js'
 import AccountsTable from './AccountsTable'
@@ -77,11 +77,22 @@ class Dash extends Component {
     console.log("JSON.stringify(propsOfTypes) = " + JSON.stringify(propsOfTypes))
     return (
       <div style={ outerDiv }>
-        <div style={ combineCSS(tableWrapper, height) }>
-          <div style={ titleSize }>Holdings:</div>
+        <div style={ titleSize }>Holdings: <small style={ smallFont }>(scroll down)</small></div>
+        <Table>
+        <thead>
+          <tr>
+            <th style={ noPaddingRight }>acct. id</th>
+            <th style={ padding(20,38) }>ticker name</th>
+            <th style={ padding(10,20) }>ticker</th>
+            <th>price</th>
+            <th><p style={ floatRight }>quantity</p></th>
+          </tr>
+        </thead>
+        </Table>
+        <div style={ height }>
           <HoldingsTable holdings={holdings.Positions}></HoldingsTable>
         </div>
-        <div style={ tableWrapper }>
+        <div>
           <div style={ titleSize }>Accounts:</div>
           <AccountsTable propsOfTypes={propsOfTypes}></AccountsTable>
         </div>
