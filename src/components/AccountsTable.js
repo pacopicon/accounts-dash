@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'reactstrap';
 import '../styles/bootstrap.min.css' 
+import { commafy } from '../helpers.js'
 
 export default ({propsOfTypes}) => (
   <Table striped>
@@ -17,7 +18,7 @@ export default ({propsOfTypes}) => (
         propsOfTypes.map((propsOfType, i) => {
           return  <tr key={i}>
                     <th scope="row">{propsOfType.type}</th>
-                    <td>${Math.round(propsOfType.sum * 100)/100}</td>
+                    <td>${commafy(Math.round(propsOfType.sum * 100)/100)}</td>
                     <td>{Math.round(propsOfType.percentage * 100)/100}%</td>
                   </tr>
         })    
