@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Table } from 'reactstrap';
 import { padding } from '../styles/styles.js'
 import '../styles/bootstrap.min.css' 

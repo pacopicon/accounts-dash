@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
-import { outerDiv, titleSize, height, padding, noPaddingRight, smallFont, floatRight } from '../styles/styles.js'
+import { outerDiv, titleSize, height, padding, noPadding, smallFont, centered } from '../styles/styles.js'
 import '../styles/bootstrap.min.css'
 import accounts from '../data/accounts.js'
 import holdings from '../data/holdings.js'
@@ -21,7 +21,7 @@ class Dash extends Component {
   filterTypes(accounts) {
     let unfilteredTypes = []
 
-    accounts.map(account => {
+    accounts.forEach(account => {
       unfilteredTypes.push(account.type)
     })
 
@@ -40,9 +40,9 @@ class Dash extends Component {
         sums_by_type = acctTypes.map(acctType => {
           let sum = 0
           for (let i=0; i<accounts.length; i++) {
-            if (accounts[i].type == acctType) {
+            if (accounts[i].type === acctType) {
               for (let j=0; j<holdings.length; j++) {
-                if (accounts[i].id == holdings[j].account_id) {
+                if (accounts[i].id === holdings[j].account_id) {
                   sum += holdings[j].price * holdings[j].quantity
                 }
               }
@@ -73,19 +73,22 @@ class Dash extends Component {
   }
 
   render() {
-    const { propsOfTypes, acctTypes } = this.state
+    const { propsOfTypes } = this.state
     console.log("JSON.stringify(propsOfTypes) = " + JSON.stringify(propsOfTypes))
     return (
       <div style={ outerDiv }>
+        <div>
+          <img style={ centered } src={require("../assets/images/quovo-logo.jpg")} />
+        </div>
         <div style={ titleSize }>Holdings: <small style={ smallFont }>(scroll down)</small></div>
         <Table>
         <thead>
           <tr>
-            <th style={ noPaddingRight }>acct. id</th>
-            <th style={ padding(20,38) }>ticker name</th>
-            <th style={ padding(10,20) }>ticker</th>
-            <th>price</th>
-            <th><p style={ floatRight }>quantity</p></th>
+            <th style={ padding(10,9) }>acct. id</th>
+            <th style={ padding(25,50) }>ticker name</th>
+            <th style={ padding(10,25) }>ticker</th>
+            <th style={ padding(10,50) }>price</th>
+            <th style={ noPadding }>quantity</th>
           </tr>
         </thead>
         </Table>
@@ -99,6 +102,9 @@ class Dash extends Component {
       </div>
     )
   }
+
+
+
 }
 
 export default Dash

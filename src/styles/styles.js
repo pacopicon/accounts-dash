@@ -32,8 +32,9 @@ export const floatRight = {
 	margin: '0'
 }
 
-export const noPaddingRight = {
-	paddingRight: '0'
+export const noPadding = {
+	padding: '0px',
+	lineHeight: '3rem'
 }
 
 export const titleSize = {
@@ -42,4 +43,9 @@ export const titleSize = {
 
 export const smallFont = {
 	fontSize: '10px'
+}
+
+export const centered = {
+	display: 'block',
+  margin: '0 auto'
 }
